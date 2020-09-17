@@ -15,7 +15,6 @@ const {
 const screenshotsAuthors = {};
 const timeBetweenMessage = 60 * 60 * 20; // 20 hours in seconds
 // const IDChannelAdmin = '116601499177451524' // ADMIN for test!
-// const IDGdCDiscord_i_guess = '115899998352179203'
 const IDChannelScreenshots = "434310515762790430";
 
 module.exports = (message, client) => {

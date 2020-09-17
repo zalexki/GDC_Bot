@@ -1,9 +1,8 @@
 const moment = require("moment");
 
-const { isMatch, keywordEngine } = require("../../utils/keywordEngine");
-const { RollDice, clamp } = require("../../utils/math");
-const { sendMessage, replaceMessage } = require("../../utils/discord");
-const { compareFolders } = require("../../utils/files");
+const { isMatch, keywordEngine } = require("../utils/keywordEngine");
+const { sendMessage, replaceMessage } = require("../utils/discord");
+const { compareFolders } = require("../utils/files");
 
 const keywordsAndResponses = [
   {
