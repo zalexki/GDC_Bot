@@ -1,0 +1,36 @@
+{
+  "name": "shindice",
+  "version": "1.0.0",
+  "description": "Just a test from Shinriel to roll some dice",
+  "main": "bot.js",
+  "scripts": {
+    "start": "nodemon api.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://The_shinriel@bitbucket.org/The_shinriel/rolldice.git"
+  },
+  "author": "Shinriel",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/The_shinriel/rolldice#readme",
+  "dependencies": {
+    "bitly-node-api": "^0.0.4",
+    "dir-compare": "^2.3.0",
+    "discord.js": "^11.1.0",
+    "dotenv": "^8.2.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "express": "^4.17.1",
+    "json-stringify": "^1.0.0",
+    "mersenne-twister": "^1.1.0",
+    "moment": "^2.24.0",
+    "nodemon": "^2.0.2"
+  },
+  "devDependencies": {
+    "eslint": "^7.8.1",
+    "eslint-config-node": "^4.1.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.22.0",
+    "prettier": "^2.1.1"
+  }
+}
