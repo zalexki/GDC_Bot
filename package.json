@@ -1,7 +1,7 @@
 {
-  "name": "shindice",
+  "name": "gdc-bot",
   "version": "1.0.0",
-  "description": "Just a test from Shinriel to roll some dice",
+  "description": "Discord bot for GDC",
   "main": "bot.js",
   "scripts": {
     "start": "node api.js",
@@ -10,11 +10,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://The_shinriel@bitbucket.org/The_shinriel/rolldice.git"
+    "url": "git+https://github.com/GdC-Framework/GDC_Bot"
   },
   "author": "Shinriel",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/The_shinriel/rolldice#readme",
+  "homepage": "https://github.com/GdC-Framework/GDC_Bot",
   "dependencies": {
     "bitly-node-api": "^0.0.4",
     "dir-compare": "^2.3.0",
