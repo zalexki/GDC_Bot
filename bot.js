@@ -84,7 +84,7 @@ if (process.env.WELCOME_CHANNEL) {
       if (!channel) return;
 
       // Send the message, mentioning the member
-      channel.send(`Salut ${member}, 
+      channel.send(`Salut ${member},
         Tu trouvera ci-dessous tout ce qu’il te faut pour nous rejoindre <${await shortUrl(
           "http://forum.canardpc.com/threads/96457-Serveur-Arma-3-COOP-CPC-Gr%C3%A8ce-de-Canards-TS-62-210-131-115-RELOADED?s=f1e649135fe3dbcfff14570e4014b87a"
         )}>

@@ -6,11 +6,11 @@ const {
 } = require("../../utils/discord");
 
 /*
-  Structure screenshotsAuthors:
-
-  authorId: {
-      lastValidMessage: Utc Date
-  }
+  @const screenshotsAuthors Object
+    authorId: {
+      lastValidMessages: [Utc Date]
+      nbWarning: Int
+    }
 */
 const screenshotsAuthors = {};
 const timeBetweenMessage = 60 * 60 * 20; // 20 hours in seconds
@@ -45,17 +45,33 @@ const hasImage = (message) =>
 
 const canSendMessage = (message) => {
   if (screenshotsAuthors[message.author.id]) {
-    const { lastValidMessage } = screenshotsAuthors[message.author.id];
-    const screenshotRole = message.guild.roles.find("name", "screenshot");
+    const { lastValidMessages } = screenshotsAuthors[message.author.id];
+    const screenshotRole = message.guild.roles.find("name", "screenshoter");
 
     if (message.member.roles.has(screenshotRole.id) === true) {
+      lastValidMessages.forEach(element, index => {
+        const previousMoment = moment
+          .utc(element)
+          .add(timeBetweenMessage, "s");
+
+        if (moment.utc().isBefore(previousMoment)) {
+          if (index > 5) {
+            // warn
+          }
+          if (index > 6) {
+            lastValidMessages.splice(5, 1);
+          }
+        }
+
+      });
       return true;
     }
 
     // Check if message is too soon
     const previousMoment = moment
-      .utc(lastValidMessage)
+      .utc(lastValidMessages[lastValidMessages.length])
       .add(timeBetweenMessage, "s");
+
     if (moment.utc().isBefore(previousMoment)) {
       return false;
     }
@@ -67,23 +83,23 @@ const canSendMessage = (message) => {
 const updateLastValidMessage = (message) => {
   if (screenshotsAuthors[message.author.id]) {
     // Update, already exists
-    screenshotsAuthors[message.author.id].lastValidMessage = moment.utc();
+    screenshotsAuthors[message.author.id].lastValidMessages.push(moment.utc());
     screenshotsAuthors[message.author.id].nbWarning = 0;
   } else {
     // New author
     screenshotsAuthors[message.author.id] = {
-      lastValidMessage: moment.utc(),
+      lastValidMessages: [moment.utc()],
       nbWarning: 0,
     };
   }
 };
 
 const handleWarning = ({ message, client }) => {
-  const { nbWarning = 0, lastValidMessage } = screenshotsAuthors[
+  const { nbWarning = 0, lastValidMessages } = screenshotsAuthors[
     message.author.id
   ];
 
-  const diffSinceFirstImage = moment(lastValidMessage)
+  const diffSinceFirstImage = moment(lastValidMessages[lastValidMessages.length])
     .locale("fr")
     .fromNow(true);
 
